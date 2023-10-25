@@ -1,0 +1,61 @@
+<h1 class="pb-4">Explore Games</h1>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/games">Games</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Explore Games</li>
+  </ol>
+</nav>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
+  <% if(typeof games !== 'undefined' && games.length > 0 ) { %> <%
+  games.forEach(function(game, ) { %>
+  <a href="/games/<%- game.name %>" class="col text-center game__link">
+    <div class="game__img shadow">
+      <img src="img/<%- game.image %>" alt="<%- game.name %>" loading="lazy" />
+    </div>
+    <div class="pt-1"><%- game.name %></div>
+  </a>
+  <% }) %> <% } %>
+</div>
+
+<div class="pb-5 mb-2">
+  <h2>Stories</h2>
+  <% if(typeof gameById !== 'undefined' && gameById.length > 0 ) { %> <%
+  gameById.forEach(function(story, index) { %> <% }) %> <% } %>
+  <div class="pt-4 row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(typeof gameById !== 'undefined' && gameById.length > 0 ) { %> <%
+    gameById.forEach(function(story, index) { %>
+    <article>
+      <a href="/story/<%= story._id %>" class="col text-center game__link">
+        <div class="game__img game__img--large storybook">
+          <img src="/img/book.png" alt="storybook" />
+          <img
+            src="/uploads/<%= story.image %>"
+            class="open-book"
+            alt="storybook hover"
+            style="width: 100%; height: 100%"
+          />
+        </div>
+        <div class="pt-1"><%= story.name %></div>
+        <% if (isAdmin) { %>
+        <table>
+          <tr>
+            <a href="/admin/edit-story/<%=story._id%>?edit=true" class="btn"
+              >Edit</a
+            >
+            <form action="/admin/delete-story" method="POST">
+              <input type="hidden" value="<%=story._id%>" name="storyId" />
+              <button class="btn" type="submit">Delete</button>
+            </form>
+          </tr>
+        </table>
+        <% } %>
+      </a>
+    </article>
+    <% }) %> <% } else { %>
+    <p>No Items Found.</p>
+    <% } %>
+  </div>
+</div>

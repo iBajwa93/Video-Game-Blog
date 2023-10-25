@@ -1,0 +1,56 @@
+<h1 class="pb-4">Random Story</h1>
+
+<% if(story != null) { %>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <%- story.name %>
+      </li>
+    </ol>
+  </nav>
+  
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <img
+        src="/uploads/<%- story.image %>"
+        class="img-fluid"
+        style="top: 20px"
+        alt="<%- story.name %>"
+        loading="lazy"
+      />
+      <% if (isAdmin) { %>
+      <div class="ms-5">
+        <table>
+          <tr>
+            <a href="/admin/edit-story/<%=story._id%>?edit=true" class="btn"
+              >Edit</a
+            >
+            <form action="/admin/delete-story" method="POST">
+              <input type="hidden" value="<%=story._id%>" name="storyId" />
+              <button class="btn" type="submit">Delete</button>
+            </form>
+          </tr>
+        </table>
+      </div>
+      <% } %>
+    </div>
+  
+    <div class="col-12 col-md-8">
+      <div class="row">
+        <div class="col-12"><h1><%- story.name %></h1></div>
+        <div class="col-12 mb-4"><i class="bi"></i> <%- story.game %></div>
+        <div class="col-12" style="white-space: pre-line">
+          <h4>Story Details</h4>
+          <div><%- story.description %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } else { %>
+  <p>No Item Found.</p>
+  <% } %>
+  
+  <script src="/js/script.js"></script>
+  

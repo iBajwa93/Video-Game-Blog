@@ -1,0 +1,92 @@
+:root {
+  --bs-font-sans-serif: "Rubik", sans-serif;
+}
+
+.container-xxl {
+  max-width: 1100px;
+}
+
+body {
+  /* repeats image in the background of the entire body */
+  background-color: black;
+  background-image: url("/img/i-like-games_red.png");
+  background-position: 50px;
+  background-repeat: round;
+  background-size: 300px, 300px;
+}
+
+textarea {
+  width: 1005px;
+  height: 400px;
+}
+
+.storybook {
+  position: relative;
+  display: inline-block;
+}
+.storybook .open-book {
+  display: none;
+  position: absolute;
+}
+.storybook:hover .open-book {
+  display: inline-block;
+}
+
+a {
+  color: var(--bs-dark);
+}
+
+.push {
+  margin-left: 100px;
+  font-size: large;
+}
+
+.login-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+  display: block;
+}
+
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.item {
+  margin: 0 1rem;
+  padding: 0;
+}
+
+/*Game Card*/
+
+.game__link {
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  transition: 250ms all;
+}
+
+.game__link:hover {
+  transform: scale(1.1);
+}
+
+.game__img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  margin-bottom: 10px;
+  box-shadow: 0px 3px 6px rba(0, 0, 0, 0.16);
+  overflow: hidden;
+  border-radius: 8px;
+}
+.game__img--large {
+  height: 240px;
+}
+.game__img img {
+  width: 90%;
+  object-fit: cover;
+}

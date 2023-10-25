@@ -1,0 +1,75 @@
+
+<div class=" row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+    <div class="col-12 col-lg-6">
+        <img src="/img/<%= selectedImage %>"; style="height:400px;width:420px" class="rounded-circle d-block mx-lg-auto img-fluid" loading="lazy" alt="Stories with Node.js">
+    </div>
+
+    <div class="col-12 col-lg-6">
+        <h1 class="display-5 fw-bold mb-3">Huge selection of amazing stories!</h1>
+        <p class="lead">Read about my travels which consist of danger, mystery and adventure. All taking place inside the video 
+            game universe!
+        </p>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-between-start">
+            <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a>
+            <a href="/explore-random" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Random Story</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Game List Start -->
+
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+
+    <!-- loop through all games and dynamic fields to output them -->
+    <% if(games != '') { %>
+        <% games.forEach(function(game, index) { %>
+            <a href="/games/<%- game.name %>" class="col text-center game__link">
+                <div class="game__img shadow">
+                    <img src="img/<%- game.image %>" alt="<%- game.name %>" style="width:100%;height:100%" loading="lazy">
+                    </div>
+                <div class="pt-1"><%- game.name %></div>
+            </a>
+        <% }) %>
+    <% } %>
+
+
+    <a href="/games" class="col text-center game__link">
+        <div class="game__img shadow">
+            <img src="img/View-All-Games.jpg" alt="View All Games" style="width:100%;height:100%" loading="lazy">
+            </div>
+        <div class="pt-1">View All Games</div>
+    </a>
+</div>
+
+<!-- Game List End -->
+
+<!-- Latest Start -->
+
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>
+            Latest Stories
+        </h2>
+        <a href="/explore-latest" class="ms-auto">View More</a> 
+    </div>
+
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+        <% if (entry != '') { %>
+            <% entry.latest.forEach(function(story, index) { %>
+        <a href="/story/<%= story._id %>" class="col text-center game__link">
+            <div class="game__img game__img--large shadow">
+            <img src="/uploads/<%= story.image %>" alt="<%= story.name %>" style="width:100%;height:100%"
+            loading="lazy">
+        </div>
+        <div class="pt-1"><%= story.name %></div>
+        </a>
+        <% }) %>
+        <% } %>
+
+
+    </div>
+
+</section>

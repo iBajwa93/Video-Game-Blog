@@ -1,0 +1,68 @@
+<form
+class=""
+action="/admin/<% if (editing) { %>edit-story<% } else { %>submit-story<% } %>"
+method="POST"
+>
+<div class="">
+    <label for="name">Name</label>
+    <input
+    type="text"
+    name="name"
+    class="mb-4"
+    id="name"
+    value="<% if (editing) { %><%= story.name %><% } %>"
+    />
+</div>
+
+<div class="row g-3">
+    <div class="col-12">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" name="date" id="date" class="ms-2" value="<% if (editing) { %><%= story.date %><% } %>"
+        />
+    </div>
+
+<div class="col-12">
+    <label for="game">Select Game</label>
+    <select class="form-select form-control" name="game" aria-label="game">
+    <option selected><% if (editing) { %><%= story.game %><% } %></option>
+    <!-- value is dependant on our enum options in the game field for the story model -->
+    <option value="The Elder Scrolls V: Skyrim">
+        The Elder Scrolls V: Skyrim
+    </option>
+    <option value="Monster Hunter World">Monster Hunter World</option>
+    <option value="Cyberpunk 2077">Cyberpunk 2077</option>
+    <option value="Elden Ring">Elden Ring</option>
+    <option value="Soul Calibur 6">Soul Calibur 6</option>
+    <option value="Fallout 4">Fallout 4</option>
+    <option value="Baldur's Gate III">Baldur's Gate III</option>
+    <option value="Pathfinder: Wrath of the Righteous">Pathfinder: Wrath of the Righteous</option>
+
+    </select>
+</div>
+
+<div class="">
+    <label for="imageUrl">Image URL: <br/><h1 style="font-size:13px" class="ms-2">Current File: /uploads/<% if (editing) { %><%= story.image %><% } %></h1></label>
+    <input
+    type="file"
+    class="form-control"
+    name="image"
+    accept="image/*"
+    >    </input>
+</div>
+
+<div class="">
+    <label for="description">Description</label>
+    <textarea name="description" id="description" rows="5">
+<% if (editing) { %><%= story.description %><% } %></textarea
+    >
+</div>
+
+<% if (editing) {%>
+<input type="hidden" value="<%= story._id %>" name="storyId" />
+<% } %>
+
+<button class="" type="submit">
+    <% if (editing) { %> Update story<% } else { %>Add story<% } %>
+</button>
+
+</form>
